@@ -134,6 +134,19 @@ class FaceGenerator():
 		self.optimizerD = optim.Adam(self.netD.parameters(), lr=self.LR, betas=(0.5, 0.999))
 		self.optimizerG = optim.Adam(self.netG.parameters(), lr=self.LR, betas=(0.5, 0.999))
 
+	def main(self):
+		if args.mode == "facegen":
+			if args.model_path is None:
+				print("You must specify a valid model file (/models).")
+				return
+			
+			self.generate_face(model_path=args.model_path)
+
+			return
+
+		if args.mode == "train":
+			pass
+
 	def prepare_data(self):
 		print(f"Preparing data, b=[{self.BS}].")
 		dataset = dset.ImageFolder(root=DATA_PATH, transform=transforms.Compose([
@@ -291,9 +304,16 @@ class FaceGenerator():
 #     return tensor
 
 if __name__ == "__main__":
+	parser = argparse.ArgumentParser()
+	parser.add_argument("--mode", help="facegen | facegen_cartoon | animate_cartoon")
+	parser.add_argument("--model_path", help="Model to use to generate an artificial human face. Find in e-Dylan/gan_cartoonizer/models", nargs="?", default="models/netG_EPOCHS=12_IMGSIZE=128.pth")
+	parser.add_argument("--input_file", help="Input file to turn into a cartoon animation. Must be >= 256x256.", nargs="?")
+	parser.add_argument("--animate", help="Whether or not the cartoon image will be turned into an animation.", nargs="?", default=False)
+	parser.add_argument("--video_sample", help="Video sample (.mp4) to animate the cartoon face image to.", nargs="?", default="")
+	args = parser.parse_args()
 	# train()
 	# image_tensor = torch.load('training_img_grid.pt')
 	# play_training_images(image_tensor)
 	facegener = FaceGenerator()
-	facegener.train()
+	facegener.main()
 	# pass
