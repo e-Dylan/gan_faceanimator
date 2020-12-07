@@ -10,17 +10,11 @@ These faces are then converted into cartoon-style graphics using latent vector p
 
 ### Test This Network
 
-You can test this program easily in my [Colab]() instance.
+You can test this program easily in my [Colab](https://github.com/e-Dylan/gan_cartoonizer/blob/master/gan_cartoonizer.ipynb) instance.
 
-The models have already been trained, there is no need to train them.
-
-## Training progress visualization.
-![App Demo](demo/training_visual.gif)
-
-## Training Process
-15-minute training loss graph for 64 x 64 groundtruth images.
-![Train Loss Graph](train-loss-graph.png)
-
-Training is done by feeding 64-sized batches of face images using the [CelebA](http://mmlab.ie.cuhk.edu.hk/projects/CelebA.html) dataset. Images were scaled to 128x128 and the network architecture was designed accordingly. The network learns to extract features from human faces and replicate them artificially by gradient descent.
-
-Training was done on a single GPU for roughly 3 hours. The final product generates believable human faces at 128x128 resolution. These are visible at [/demo](https://github.com/e-Dylan/gan_facegenerator/tree/master/demo)
+1. Open a Google Colab.
+2. Paste each cell into a new code cell.
+3. Edit -> Notebook Settings -> Hardware Accelerator: GPU.
+4. Run first cell.
+5. Setup data: Place your source face image you want to animate in stylegan2/raw directory - name it raw_face.jpg. Place your source animation video in the top level file directory in the left-side menu.
+6. Run the cell.
