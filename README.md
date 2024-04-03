@@ -6,7 +6,6 @@ This network was built to run off my previous [Face Generator](https://github.co
 These faces are then converted into cartoon-style graphics using latent vector projection and animated using the [first order animation model](https://github.com/AliaksandrSiarohin/first-order-model).
 
 ## Demo Face Cartoon/Animation
-![Algorithm Demo](demo/face-animator-thumbnail.gif)
 
 ### Test This Network
 
